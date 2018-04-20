@@ -104,7 +104,7 @@
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
-\title[]{Lab \#3: Software Defined Radio \\ ARDS signal analysis } % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{Lab \#3: Software Defined Radio \\ RDS signal analysis } % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Alexander Blaauwgeers \\ \& \\ Bernardus Jansen} % Your name
 \institute[University of Amsterdam] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -135,60 +135,97 @@ song that is currently playing.
 \end{block}
 \end{frame}
 
+\begin{frame}{What is RDS?}
+Radio Data System
+
+\begin{itemize}
+    \item Allows to send data over FM radio
+    \item Multiple fields
+    \begin{itemize}
+        \item Most only flags or short identifiers
+    \end{itemize}
+    \item Radio Text field
+    \begin{itemize}
+        \item Allows for arbitrary 64-character strings
+    \end{itemize}
+    \item Traffic Message Channel
+    \begin{itemize}
+        \item Often encoded
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
 %----------------------------------------------------------------------------------
 \section{Theory}
 %----------------------------------------------------------------------------------
 \begin{frame}{Theory}
 \centering
 \begin{itemize}
-    \item 
+    \item Data is carried on a 57kHz subcarrier
 \end{itemize}
 
-\end{frame}
-
-%----------------------------------------------------------------------------------
-\section{Methodology}
-\begin{frame}{Methodology}{}
-We have developed and implemented following methodology:
+\includegraphics[width=\textwidth]{fmspectrum.png}
 
 \end{frame}
 
 %----------------------------------------------------------------------------------
-\section{Experiments}
-\begin{frame}{Experiments}
+\section{Receiving RDS}
+\begin{frame}[fragile]{Receiving RDS Signals}
+\begin{itemize}
+    \item GQRX allows to receive RDS channel information natively
+    \begin{itemize}
+        \item But only basic and interpreted information
+    \end{itemize}
+    \item \verb|redsea|
+    \begin{itemize}
+        \item Low level tool that can extract all raw RDS fields from \verb|rtl_fm| input
+    \end{itemize}
+\end{itemize}
+\end{frame}
 
-\centering
-\begin{figure}[h]
-    %%\lstinputlisting[language=Python]{demo.py}
-    %%\includegraphics[width=10cm]{code.png}%%
+%----------------------------------------------------------------------------------
+\section{Transmitting RDS}
 
-\end{figure}
+\begin{frame}{Security}
+    \pause \centering None
+\end{frame}
+
+\begin{frame}{Transmitting RDS Signals}
+
+\begin{itemize}
+    \item It is possible to send FM/RDS signals with your own transmitter
+    \begin{itemize}
+        \item Possible to make users switch channels with the appropriate flags
+        \item Display arbitrary text on user radio displays
+        \pause \item But it is illegal (exept below 50 nW) \footnote{\tiny{Subcategorie 8.C "Regeling gebruik van frequentieruimte zonder vergunning en zonder meldingsplicht 2015"}}
+    \end{itemize}
+\end{itemize}
+
+
 
 \end{frame}
 
 %----------------------------------------------------------------------------------
-\section{Results}
-\begin{frame}{Results}
-
+\section{PoC - 102.3 MHz}
+\begin{frame}{Hardware}
+    \includegraphics[width=9cm]{FMzend.png}
 \end{frame}
 
+\begin{frame}{Code}
+    \includegraphics[width=9cm]{FMcode.png}
+\end{frame}
+
+\begin{frame}{102.3 MHz}
+    \includegraphics[width=9cm]{photo_2018-04-20_10-12-16.jpg}
+\end{frame}
 
 %----------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------
-
-
-
-
-%\begin{frame}{Design}{Network physical topology}
-%\includegraphics[width=\textwidth]{ANLab3Group3PhysicalDia.png}
-%\end{frame}
-
-
 
 \begin{frame}{Questions?}
 
-Do you have any questions?
+Questions?
 
 %\def\newblock{}
 %\bibliographystyle{unsrt}
